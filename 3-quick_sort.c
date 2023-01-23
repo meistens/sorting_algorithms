@@ -25,8 +25,7 @@ void quick_sort(int *array, size_t size)
 int partition(int *array, int low, int high, size_t size)
 {
 	int temp;
-	size_t i, j;
-	int x, y = low - 1;
+	int x = low - 1, y;
 	int pivot = array[high];
 
 	for (y = low; y <= high; y++)
@@ -36,14 +35,14 @@ int partition(int *array, int low, int high, size_t size)
 			x++;
 			if (x != y)
 			{
-				temp = array[i];
-				array[i] = array[j];
-				array[j] = temp;
+				temp = array[x];
+				array[x] = array[y];
+				array[y] = temp;
 				print_array(array, size);
 			}
 		}
 	}
-	return (i + 1);
+	return (x);
 }
 
 /**
@@ -60,7 +59,7 @@ void mod(int *array, size_t size, int low, int high)
 	if (low < high)
 	{
 		int part = partition(array, low, high, size);
-		mod(array, low, part - 1, size);
-		mod(array, part + 1, high, size);
+		mod(array, size, low, part - 1);
+		mod(array, size, part + 1, high);
 	}
 }
