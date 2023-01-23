@@ -59,6 +59,7 @@ void mod(int *array, size_t size, int low, int high)
 	if (low < high)
 	{
 		int part = partition(array, low, high, size);
+
 		mod(array, size, low, part - 1);
 		mod(array, size, part + 1, high);
 	}
