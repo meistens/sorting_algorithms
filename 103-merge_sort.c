@@ -11,34 +11,34 @@
  */
 void merge(int *prmArray, int prmStart, int prmMiddle, int prmEnd)
 {
-	int lp1, lp2, lp3, lp4 = 0;
+	int cLoop1, cLoop2, cLoop3, cLoop4 = 0;
 	int size1 = prmMiddle - prmStart + 1, size2 = prmEnd - prmMiddle;
 	int tmp1[4096], tmp2[4096];
 	int *tmp3 = malloc(sizeof(int) * (size1 + size2));
 
-	for (lp1 = 0, lp2 = 0; lp1 < size1 || clp2 < size2; lp1++, lp2++)
+	for (cLoop1 = 0, cLoop2 = 0; cLoop1 < size1 || cLoop2 < size2; cLoop1++, cLoop2++)
 	{
-		tmp1[lp1] = prmArray[prmStart + lp1];
-		tmp2[lp2] = prmArray[prmMiddle + 1 + lp2];
+		tmp1[cLoop1] = prmArray[prmStart + cLoop1];
+		tmp2[cLoop2] = prmArray[prmMiddle + 1 + cLoop2];
 	}
 
-	for (lp1 = lp2 = 0, lp3 = prmStart;
-	     lp1 < size1 && lp2 < size2; lp3++)
-		if (tmp1[lp1] <= tmp2[lp2])
-			prmArray[lp3] = tmp3[lp4++] = tmp1[lp1++];
+	for (cLoop1 = cLoop2 = 0, cLoop3 = prmStart;
+	     cLoop1 < size1 && cLoop2 < size2; cLoop3++)
+		if (tmp1[cLoop1] <= tmp2[cLoop2])
+			prmArray[cLoop3] = tmp3[cLoop4++] = tmp1[cLoop1++];
 		else
-			prmArray[lp3] = tmp3[lp4++] = tmp2[lp2++];
+			prmArray[cLoop3] = tmp3[cLoop4++] = tmp2[cLoop2++];
 
 	printf("Merging...\n[left]: ");
 	print_array(tmp1, size1);
 	printf("[right]: ");
 	print_array(tmp2, size2);
 
-	while (lp1 < size1)
-		prmArray[lp3++] = tmp3[lp4++] = tmp1[lp1++];
+	while (cLoop1 < size1)
+		prmArray[cLoop3++] = tmp3[cLoop4++] = tmp1[cLoop1++];
 
-	while (lp2 < size2)
-		prmArray[lp3++] = tmp3[lp4++] = tmp2[lp2++];
+	while (cLoop2 < size2)
+		prmArray[cLoop3++] = tmp3[cLoop4++] = tmp2[cLoop2++];
 
 	printf("[Done]: ");
 	print_array(tmp3, size1 + size2);
@@ -70,14 +70,14 @@ void sort(int *prmArray, int prmStart, int prmEnd)
 /**
  * merge_sort - function that sorts an array of integers in ascending
  * order using the Merge sort algorithm
- * @Array: array of int to sort
- * @size: size of the array
+ * @prmArray: array of int to sort
+ * @prmSize: size of the array
  * Return: nothing void
  */
 
-void merge_sort(int *Array, size_t size)
+void merge_sort(int *prmArray, size_t prmSize)
 {
-	if (Array == NULL || size < 2)
+	if (prmArray == NULL || prmSize < 2)
 		return;
-	sort(Array, 0, size - 1);
+	sort(prmArray, 0, prmSize - 1);
 }
