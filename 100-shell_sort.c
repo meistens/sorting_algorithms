@@ -8,8 +8,9 @@
 
 void shell_sort(int *array, size_t size)
 {
-	size_t h = 1;
+	size_t h = 0;
 	size_t i = h;
+	size_t ins;
 	int temp;
 	size_t j;
 
@@ -22,14 +23,15 @@ void shell_sort(int *array, size_t size)
 			temp = array[i];
 			j = i;
 
-			while (j >= h && array[j - h] > temp)
+			while (j > h - 1 && array[j - h] >= temp)
 			{
-				array[j] = array[j - h];
+				ins = array[j - h];
+				array[j - h] = array[j];
+				array[j] = ins;
 				j = j - h;
 			}
-			array[j] = temp;
 		}
 		print_array(array, size);
-		h = h / 3;
+		h = (h - 1) / 3;
 	}
 }
