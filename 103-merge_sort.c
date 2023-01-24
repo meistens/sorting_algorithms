@@ -70,14 +70,14 @@ void sort(int *prmArray, int prmStart, int prmEnd)
 /**
  * merge_sort - function that sorts an array of integers in ascending
  * order using the Merge sort algorithm
- * @prmArray: array of int to sort
- * @prmSize: size of the array
+ * @Array: array of int to sort
+ * @size: size of the array
  * Return: nothing void
  */
 
-void merge_sort(int *prmArray, size_t prmSize)
+void merge_sort(int *Array, size_t size)
 {
-	if (prmArray == NULL || prmSize < 2)
+	if (Array == NULL || size < 2)
 		return;
-	sort(prmArray, 0, prmSize - 1);
+	sort(Array, 0, size - 1);
 }
